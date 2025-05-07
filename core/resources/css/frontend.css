@@ -1,0 +1,12 @@
+@import '../../vendor/filament/filament/resources/css/theme.css';
+@import '_checkbox-cards.css';
+
+/* Sky search result highlight */
+span.highlight {
+    @apply bg-primary-200 text-primary-700 px-2
+}
+
+/* debug tool 😜 */
+.bord {
+    border: solid 1px chocolate;
+}

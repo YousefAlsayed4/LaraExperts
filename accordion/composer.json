@@ -1,0 +1,61 @@
+{
+    "name": "lara-experts/accordion",
+    "description": "Form Accordion is filamentphp layout component to group components",
+    "keywords": [
+        "laravel",
+        "lara-experts",
+        "ui",
+        "tooltip",
+        "tippy",
+        "accordion",
+        "code",
+        "design",
+        "input",
+        "coulmn",
+        "field",
+        "generator",
+        "filamentphp"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "filament/filament": "^3.0",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "nunomaduro/phpinsights": "^2.8",
+        "orchestra/testbench": "^8.0",
+        "phpstan/extension-installer": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaraExperts\\Accordion\\": "src"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint",
+        "pint": "vendor/bin/pint",
+        "test:phpstan": "vendor/bin/phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaraExperts\\Accordion\\AccordionServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

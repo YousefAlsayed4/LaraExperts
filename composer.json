@@ -1,0 +1,127 @@
+{
+    "name": "lara-experts/forms",
+    "description": "A complete form builder package for Laravel and Filament, providing reusable UI components and tools to create dynamic, customizable forms",
+    "type": "library",
+    "minimum-stability": "dev",
+    "keywords": [
+        "laravel",
+        "lara-experts",
+        "form-builder",
+        "filamentphp",
+        "ui-components",
+        "package-suite"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yousef Alsayed",
+            "email": "yalsayed19@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "ext-pdo_sqlite": "*",
+        "ext-sqlite3": "*",
+        "codeat3/blade-clarity-icons": "^1.7",
+        "codeat3/blade-iconpark": "^1.5",
+        "filament/filament": "^3.1",
+        "intervention/image": "^2.1",
+        "lara-experts/accordion": "@dev",
+        "lara-experts/bolt": "@dev",
+        "lara-experts/core": "@dev",
+        "lara-experts/filament-plugin-tools": "@dev",
+        "lara-experts/list-group": "@dev",
+        "ryangjchandler/blade-tabler-icons": "^2.3",
+        "spatie/laravel-medialibrary": "^11.11",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.1",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "pestphp/pest-plugin-livewire": "^2.1",
+        "nunomaduro/collision": "^7.0",
+        "nunomaduro/larastan": "^2.2",
+        "orchestra/testbench": "^8.0",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/extension-installer": "^1.1",
+        "laravel/pint": "^1.0"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "core"
+        },
+        {
+            "type": "path",
+            "url": "bolt"
+        },
+        {
+            "type": "path",
+            "url": "accordion"
+        },
+        {
+            "type": "path",
+            "url": "filament-plugin-tools"
+        },
+        {
+            "type": "path",
+            "url": "list-group"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LaraExperts\\Core\\": "core/src",
+            "LaraExperts\\Bolt\\": "bolt/src",
+            "LaraExperts\\Accordion\\": "accordion/src",
+            "LaraExperts\\FilamentPluginTools\\": "filament-plugin-tools/src",
+            "LaraExperts\\ListGroup\\": "list-group/src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaraExperts\\Core\\Tests\\": "core/tests",
+            "LaraExperts\\Bolt\\Tests\\": "bolt/tests",
+            "LaraExperts\\Accordion\\Tests\\": "accordion/tests",
+            "LaraExperts\\FilamentPluginTools\\Tests\\": "filament-plugin-tools/tests",
+            "LaraExperts\\ListGroup\\Tests\\": "list-group/tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./bolt/bin/register-components"
+        ],
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint",
+        "pint": "vendor/bin/pint",
+        "test:pest": "vendor/bin/pest --parallel",
+        "test:phpstan": "vendor/bin/phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaraExperts\\Core\\CoreServiceProvider",
+                "LaraExperts\\Bolt\\BoltServiceProvider",
+                "LaraExperts\\Accordion\\AccordionServiceProvider",
+                "LaraExperts\\FilamentPluginTools\\FilamentPluginToolsServiceProvider",
+                "LaraExperts\\ListGroup\\ListGroupServiceProvider"
+            ],
+            "aliases": {
+                "Core": "LaraExperts\\Core\\CoreFacade",
+                "Bolt": "LaraExperts\\Bolt\\Facades\\Bolt"
+            }
+        }
+    },
+    "prefer-stable": true
+}
