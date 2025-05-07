@@ -24,6 +24,7 @@
         "codeat3/blade-iconpark": "^1.5",
         "filament/filament": "^3.1",
         "intervention/image": "^2.1",
+        "lara-experts/forms": "dev-main",  
         "lara-experts/accordion": "@dev",
         "lara-experts/bolt": "@dev",
         "lara-experts/core": "@dev",
@@ -32,7 +33,8 @@
         "ryangjchandler/blade-tabler-icons": "^2.3",
         "spatie/laravel-medialibrary": "^11.11",
         "spatie/laravel-package-tools": "^1.16"
-    },
+    }
+    ,
     "require-dev": {
         "phpunit/phpunit": "^10.1",
         "pestphp/pest": "^2.0",
