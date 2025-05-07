@@ -24,7 +24,6 @@
         "codeat3/blade-iconpark": "^1.5",
         "filament/filament": "^3.1",
         "intervention/image": "^2.1",
-        "lara-experts/forms": "dev-main",  
         "lara-experts/accordion": "@dev",
         "lara-experts/bolt": "@dev",
         "lara-experts/core": "@dev",
