@@ -2,7 +2,6 @@
     "name": "lara-experts/forms",
     "description": "A complete form builder package for Laravel and Filament, providing reusable UI components and tools to create dynamic, customizable forms",
     "type": "library",
-    "minimum-stability": "dev",
     "keywords": [
         "laravel",
         "lara-experts",
@@ -24,11 +23,6 @@
         "codeat3/blade-iconpark": "^1.5",
         "filament/filament": "^3.1",
         "intervention/image": "^2.1",
-        "lara-experts/accordion": "@dev",
-        "lara-experts/bolt": "@dev",
-        "lara-experts/core": "@dev",
-        "lara-experts/filament-plugin-tools": "@dev",
-        "lara-experts/list-group": "@dev",
         "ryangjchandler/blade-tabler-icons": "^2.3",
         "spatie/laravel-medialibrary": "^11.11",
         "spatie/laravel-package-tools": "^1.16"
@@ -122,5 +116,6 @@
             }
         }
     },
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
