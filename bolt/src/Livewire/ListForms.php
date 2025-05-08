@@ -14,18 +14,15 @@ class ListForms extends Component
         SEOTools::setDescription(__('Forms') . ' - ' . config('form.site_description') . ' ' . config('form.site_title'));
         SEOTools::metatags()->addMeta('theme-color', config('form.site_color'));
         SEOTools::twitter()->setSite(config('form.site_title', 'Laravel'));
-
-        return view(app('boltTheme') . '.list-forms')
-            ->with(
-                'categories',
-                config('form-bolt.models.Category')::query()
-                    ->whereHas('forms', function ($query) {
-                        $query->whereNull('extensions');
-                    })
-                    ->where('is_active', 1)
-                    ->orderBy('ordering')
-                    ->get()
-            )
+    
+        $forms = config('form-bolt.models.Form')::query()
+            ->whereNull('extensions')
+            ->where('is_active', 1)
+            ->orderBy('ordering')
+            ->get();
+    
+        return view(app('boltTheme') . '.list-forms', compact('forms'))
             ->layout(config('form.layout'));
     }
+    
 }

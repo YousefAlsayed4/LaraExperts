@@ -49,7 +49,7 @@ class ViewForm extends ViewRecord
     {
         $widgets = [
             FormResource\Widgets\FormOverview::class,
-            FormResource\Widgets\ResponsesPerMonth::class,
+            // FormResource\Widgets\ResponsesPerMonth::class,
             // FormResource\Widgets\ResponsesPerStatus::class,
             // FormResource\Widgets\ResponsesPerFields::class,
         ];
