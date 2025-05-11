@@ -17,12 +17,17 @@ class InstallApiRoutesCommand extends Command
 
 use App\Http\Controllers\Api\Form\FormController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Images\ImageController;
 use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('company')->group(function () {
     Route::get('/active_form', [FormController::class, 'get_all_active_forms']);
     Route::post('/submit_form', [FormController::class, 'submit_form']);
+
+Route::prefix('images')->group(function () {
+    Route::post('upload_images', [ImageController::class, 'upload'])->middleware('auth:api');
+});    
 });
 
 EOD;

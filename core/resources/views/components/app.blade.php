@@ -18,7 +18,7 @@
     @filamentStyles
     @stack('styles')
 
-    <link rel="stylesheet" href="{{ asset('vendor/lara-experts/frontend.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/form/frontend.css') }}">
 
     <style>
         * { font-family: 'Inter', sans-serif; }
