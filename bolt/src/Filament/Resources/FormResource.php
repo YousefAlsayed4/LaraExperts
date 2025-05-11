@@ -111,7 +111,7 @@ class FormResource extends BoltResource
             $navigationItems[] = NavigationItem::make()
                 ->label(__('List Forms'))
                 ->url(route('filament.admin.resources.forms.index'))
-                ->icon('heroicon-o-clipboard-list')
+                // ->icon('heroicon-o-clipboard-list')
                 ->group($navigationGroup);
         }
     
