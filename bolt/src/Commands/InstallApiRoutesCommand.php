@@ -16,9 +16,7 @@ class InstallApiRoutesCommand extends Command
         $routesContent = <<<'EOD'
 
 use App\Http\Controllers\Api\Form\FormController;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Images\ImageController;
-use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('company')->group(function () {

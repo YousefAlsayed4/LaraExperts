@@ -40,7 +40,7 @@ class Radio extends FieldsContract
                 ->accordions([
                     Accordion::make('general-options')
                         ->label(__('General Options'))
-                        ->icon('iconpark-checklist-o')
+                        // ->icon('iconpark-checklist-o')
                         ->schema([
                             self::required(),
                             Toggle::make('options.is_inline')->label(__('Is inline')),

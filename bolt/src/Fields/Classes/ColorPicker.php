@@ -37,7 +37,7 @@ class ColorPicker extends FieldsContract
                 ->accordions([
                     Accordion::make('general-options')
                         ->label(__('General Options'))
-                        ->icon('iconpark-checklist-o')
+                        // ->icon('iconpark-checklist-o')
                         ->schema([
                             \Filament\Forms\Components\Select::make('options.colorType')
                                 ->label(__('Color Type'))

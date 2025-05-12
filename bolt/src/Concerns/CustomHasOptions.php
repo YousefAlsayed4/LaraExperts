@@ -166,29 +166,29 @@ trait CustomHasOptions
     public static function dataSource(): Grid
     {
 
-        $dataSources = BoltPlugin::getModel('Collection')::query()          
+        $dataSources = BoltPlugin::getModel('Collection')::query()
+    ->get() // <-- this turns the query into a Collection
+    ->mapWithKeys(function ($item, $key) {
+        return [
+            $key => [
+                'title' => $item['name'],
+                'class' => $item['id'],
+            ],
+        ];
+    })
+    ->merge(
+        collect(Bolt::availableDataSource()) // ensure it's a Collection
             ->mapWithKeys(function ($item, $key) {
                 return [
                     $key => [
-                        'title' => $item['name'],
-                        'class' => $item['id'],
+                        'title' => $item['title'],
+                        'class' => $item['class'],
                     ],
                 ];
             })
-            ->toBase()
-            ->merge(
-                Bolt::availableDataSource()
-                    ->mapWithKeys(function ($item, $key) {
-                        return [
-                            $key => [
-                                'title' => $item['title'],
-                                'class' => $item['class'],
-                            ],
-                        ];
-                    })
-            )
-            ->pluck('title', 'class');
-//dd($dataSources);
+    )
+    ->pluck('title', 'class');
+
         return Grid::make()
             ->schema([
                 Select::make('options.dataSource')

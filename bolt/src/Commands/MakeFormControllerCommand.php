@@ -54,13 +54,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 // use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-/**
- *
- * @OA\Tag(
- *     name="Forms",
- *    description="Endpoints for users to retrieve forms with their fields and submit form fields."
- * )
- */
 class FormController extends Controller
 {
     use StatusCheckTrait;
@@ -370,6 +363,8 @@ class FormController extends Controller
 
 
 }
+
+
 
 
 PHP;

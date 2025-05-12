@@ -9,8 +9,7 @@ use Filament\Forms\Components\Hidden;
 use Filament\Support\Colors\Color;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\IconColumn;
-use Guava\FilamentIconPicker\Forms\IconPicker;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\Select;
 use LaraExperts\Accordion\Forms\Accordion;
 use LaraExperts\Accordion\Forms\Accordions;
 use LaraExperts\Bolt\Facades\Bolt;
@@ -47,30 +46,38 @@ class Toggle extends FieldsContract
                 ->accordions([
                     Accordion::make('general-options')
                         ->label(__('General Options'))
-                        ->icon('iconpark-checklist-o')
+                        // ->icon('iconpark-checklist-o')
                         ->schema([
                             Grid::make()
                                 ->columns()
                                 ->schema([
-                                    IconPicker::make('options.on-icon')
-                                        ->columns([
-                                            'default' => 1,
-                                            'lg' => 3,
-                                            '2xl' => 5,
+                                    Select::make('options.on-icon')
+                                        ->label(__('On Icon'))
+                                        ->options([
+                                            'heroicon-o-check-circle' => 'Check Circle',
+                                            'heroicon-o-x-circle' => 'X Circle',
+                                            'heroicon-o-star' => 'Star',
+                                            'heroicon-o-heart' => 'Heart',
+                                            'heroicon-o-bolt' => 'Bolt',
                                         ])
-                                        ->label(__('On Icon')),
-
-                                    IconPicker::make('options.off-icon')
-                                        ->columns([
-                                            'default' => 1,
-                                            'lg' => 3,
-                                            '2xl' => 5,
+                                        ->searchable()
+                                        ->columnSpanFull(),
+    
+                                    Select::make('options.off-icon')
+                                        ->label(__('Off Icon'))
+                                        ->options([
+                                            'heroicon-o-ban' => 'Ban',
+                                            'heroicon-o-trash' => 'Trash',
+                                            'heroicon-o-eye-off' => 'Eye Off',
+                                            'heroicon-o-stop' => 'Stop',
+                                            'heroicon-o-x' => 'X',
                                         ])
-                                        ->label(__('Off Icon')),
-
+                                        ->searchable()
+                                        ->columnSpanFull(),
+    
                                     ColorPicker::make('options.on-color')->hex(),
                                     ColorPicker::make('options.off-color')->hex(),
-
+    
                                     \Filament\Forms\Components\Toggle::make('options.is-inline'),
                                 ]),
                             self::required(),
@@ -80,13 +87,10 @@ class Toggle extends FieldsContract
                         ]),
                     self::hintOptions(),
                     self::visibility($sections),
-                    // @phpstan-ignore-next-line
-                    // ...Bolt::hasPro() ? \LaraZeus\BoltPro\Facades\GradeOptions::schema($field) : [],
                     Bolt::getCustomSchema('field', resolve(static::class)) ?? [],
                 ]),
         ];
     }
-
     public static function getOptionsHidden(): array
     {
         return [
