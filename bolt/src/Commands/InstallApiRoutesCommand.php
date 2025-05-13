@@ -15,7 +15,10 @@ class InstallApiRoutesCommand extends Command
         $apiRoutesPath = base_path('routes/api.php');
         $routesContent = <<<'EOD'
 
+use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Form\FormController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Images\ImageController;
 
 
