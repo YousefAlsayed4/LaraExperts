@@ -36,14 +36,14 @@ class MakeImageSupport extends Command
         $userModel = app_path('Models/User.php');
         if (File::exists($userModel)) {
             $userContent = File::get($userModel);
-            if (!Str::contains($userContent, 'public static $user_images')) {
-                $injectedCode = $this->getUserModelMediaCode();
-                $userContent = str_replace('}', $injectedCode . "\n}", $userContent);
-                File::put($userModel, $userContent);
-                $this->info("Updated: User model with media collection code.");
-            } else {
+           if (!Str::contains($userContent, '// === MEDIA COLLECTIONS ADDED BY make:image-support COMMAND ===')) {
+            $injectedCode = $this->getUserModelMediaCode();
+            $userContent = preg_replace('/}\s*$/', $injectedCode . "\n}", $userContent);
+            File::put($userModel, $userContent);
+            $this->info("Updated: User model with media collection code.");
+        } else {
                 $this->warn("User model already contains media logic.");
-            }
+        }
         } else {
             $this->error("User model not found.");
         }
@@ -117,19 +117,15 @@ class ImageController extends Controller
 PHP;
     }
 
-    protected function getUserModelMediaCode(): string
-    {
-        return <<<'PHP'
+  protected function getUserModelMediaCode(): string
+{
+    return <<<'PHP'
 
+
+    // === MEDIA COLLECTIONS ADDED BY make:image-support COMMAND ===
     public static $user_images = 'user_images';
-
     public static $field_response_image = 'field_response_image';
 
-    /**
-     * Defining Media Collections for Images.
-     *
-     * @return void
-     */
     public function registerPrimaryMediaCollection(): void
     {
         $this
@@ -137,9 +133,6 @@ PHP;
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf', 'image/svg']);
     }
 
-    /**
-     * Main Image Morph Relation.
-     */
     public function images(): \Illuminate\Database\Eloquent\Relations\MorphMany
     {
         return $this->morphMany(config('media-library.media_model'), 'model')
@@ -147,7 +140,8 @@ PHP;
     }
 
 PHP;
-    }
+}
+
 
     protected function getMediaMigrationContent(): string
 {

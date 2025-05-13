@@ -46,6 +46,12 @@ Publish all components (optionally use `--force` if needed):
 ```bash
 php artisan bolt:publish
 ```
+//
+## IMPORTANT in laravel 11 you should add this line in file bootstrap/app.php
+```
+"    api: __DIR__.'/../routes/api.php"
+
+```
 
 Generate the FormController (manual completion may be required):
 
@@ -67,6 +73,10 @@ class User extends Authenticatable
 ```
 
 ### Step 5: Set Up Image Support
+
+> ⚠️ **Important:** The image upload API requires authentication.  
+> You must create a **login endpoint using JWT** and use the **access token** when calling the image upload endpoint.
+
 
 ```bash
 php artisan make:image-support
@@ -98,6 +108,11 @@ composer require filament/spatie-laravel-translatable-plugin:"^3.2" -W
 
 #### Register the Plugin in Your Admin Panel Provider
 
+> ⚠️ **Important:**  
+> You must register the plugin in your **Admin Panel Provider** to make it visible and functional in the admin panel.
+
+
+
 ```php
 use LaraExperts\Bolt\BoltPlugin;
 use Filament\SpatieLaravelTranslatablePlugin;
@@ -111,16 +126,6 @@ public function panel(Panel $panel): Panel
             BoltPlugin::make(),
         ]);
 }
-```
-
-### Add This in the USER MODEL
-```
-add this 
-"use LaraExperts\Bolt\Models\Concerns\BelongToBolt;
- use BelongToBolt;
-"
-
-in USER MODEL
 ```
 
 ### 🔍 SEO Tools
